@@ -1,0 +1,17 @@
+{
+    "name": "marcelzwara/cms",
+    "description": "system CMS do strony z memami",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "marcelzwara\\Cms\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Marcel Zwara",
+            "email": "marcelzwara@o2.pl"
+        }
+    ],
+    "require": {}
+}
