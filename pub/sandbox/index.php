@@ -12,36 +12,60 @@
             Wybierz plik do wgrania na serwer:
         </label><br>
         <input type="file" name="uploadedFile" id="uploadedFileInput" required><br>
-        <input type="submit" value="Wyślij mema" name="submit"><br>
+        <input type="submit" value="Wyślij plik" name="submit"><br>
     </form>
 
     <?php
+    //sprawdź czy został wysłany formularz
     if(isset($_POST['submit'])) 
     {
+        //zdefiniuj folder do którego trafią pliki (ścieżka względem pliku index.php)
         $targetDir = "img/";
 
+        //pobierz pierwotną nazwę pliku z tablicy $_FILES
         $sourceFileName = $_FILES['uploadedFile']['name'];
 
+        //pobierz tymczasową ścieżkę do pliku na serwerze
         $tempURL = $_FILES['uploadedFile']['tmp_name'];
 
+        //sprawdź czy mamy do czynienia z obrazem
         $imgInfo = getimagesize($tempURL);
         if(!is_array($imgInfo)) {
             die("BŁĄD: Przekazany plik nie jest obrazem!");
         }
 
+        //wyciągnij pierwotne rozszerzenie pliku
+        //$sourceFileExtension = pathinfo($sourceFileName, PATHINFO_EXTENSION);
+        //zmień litery rozszerzenia na małe
+        //$sourceFileExtension = strtolower($sourceFileExtension);
+        /// niepotrzebne - generujemy webp
+
+        //wygeneruj hash - nową nazwę pliku
         $hash = hash("sha256", $sourceFileName . hrtime(true) );
         $newFileName = $hash . ".webp";
 
+        //zaczytujemy cały obraz z folderu tymczasowego do stringa
         $imageString = file_get_contents($tempURL);
 
+        //generujemy obraz jako obiekt klasy GDImage
+        //@ przed nazwa funkcji powoduje zignorowanie ostrzeżeń
         $gdImage = @imagecreatefromstring($imageString);
 
+        //wygeneruj pełny docelowy URL
         $targetURL = $targetDir . $newFileName;
 
+        //zbuduj docelowy URL pliku na serwerze
+        //$targetURL = $targetDir . $sourceFileName;
+        //wycofane na rzecz hasha
+
+        //sprawdź czy plik przypadkiem już nie istnieje
         if(file_exists($targetURL)) {
             die("BŁĄD: Podany plik już istnieje!");
         }
 
+        //przesuń plik do docelowej lokalizacji
+        //move_uploaded_file($tempURL, $targetURL);
+        //nieaktualne - generujemy webp
         imagewebp($gdImage, $targetURL);
 
         $db = new mysqli('localhost', 'root', '', 'cms');
