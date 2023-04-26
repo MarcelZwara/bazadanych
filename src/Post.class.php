@@ -109,7 +109,7 @@ class Post {
         //użyj globalnego połączenia
         global $db;
         //stwórz kwerendę
-        $query = $db->prepare("INSERT INTO post VALUES(NULL, ?, ?, ?, ?)");
+        $query = $db->prepare("INSERT INTO post VALUES(NULL, ?, ?, ?, ?, 0)");
         //przygotuj znacznik czasu dla bazy danych
         $dbTimestamp = date("Y-m-d H:i:s");
         //zapisz dane do bazy
