@@ -45,6 +45,7 @@
         $newFileName = $hash . ".webp";
 
         //zaczytujemy cały obraz z folderu tymczasowego do stringa
+        //...
         $imageString = file_get_contents($tempURL);
 
         //generujemy obraz jako obiekt klasy GDImage
