@@ -48,8 +48,6 @@
         //...
         $imageString = file_get_contents($tempURL);
 
-        //generujemy obraz jako obiekt klasy GDImage
-        //@ przed nazwa funkcji powoduje zignorowanie ostrzeżeń
         $gdImage = @imagecreatefromstring($imageString);
 
         //wygeneruj pełny docelowy URL
