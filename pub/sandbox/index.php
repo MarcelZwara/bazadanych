@@ -39,6 +39,7 @@
         //zmień litery rozszerzenia na małe
         //$sourceFileExtension = strtolower($sourceFileExtension);
         /// niepotrzebne - generujemy webp
+        //wyciągnij pierwotne rozszerzenie pliku
 
         //wygeneruj hash - nową nazwę pliku
         $hash = hash("sha256", $sourceFileName . hrtime(true) );
