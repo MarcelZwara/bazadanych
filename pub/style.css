@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: rgb(102, 255, 0);
 }
 div#pageContainer {
     max-width: 960px;
@@ -10,7 +11,7 @@ h1 {
     text-align: center;
 }
 div#post {
-    background-color: lightgray;
+    background-color: rgb(33, 170, 20);
     padding: 20px;
     margin-bottom: 20px;
 }
