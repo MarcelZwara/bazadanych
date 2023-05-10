@@ -46,6 +46,7 @@
 
         //zaczytujemy cały obraz z folderu tymczasowego do stringa
         //...
+
         $imageString = file_get_contents($tempURL);
 
         $gdImage = @imagecreatefromstring($imageString);
