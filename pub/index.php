@@ -11,7 +11,7 @@ Route::add('/', function() {
     //pobierz 10 najnowszych postów
     $postArray = Post::getPage();
     $twigData = array("postArray" => $postArray,
-                        "pageTitle" => "Strona główna",
+                        "pageTitle" => "DOBREMEME",
                         );
     //jeśli użytkownik jest zalogowany to przekaż go do twiga
     if(isset($_SESSION['user']))
@@ -22,7 +22,7 @@ Route::add('/', function() {
 Route::add('/upload', function() {
     //strona z formularzem do wgrywania obrazków
     global $twig;
-    $twigData = array("pageTitle" => "Wgraj mema");
+    $twigData = array("pageTitle" => "Wgraj memucha");
     //jeśli użytkownik jest zalogowany to przekaż go do twiga
     if(User::isAuth())
     {
