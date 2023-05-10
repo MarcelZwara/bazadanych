@@ -7,5 +7,6 @@ require("Vote.class.php");
 //loader to taki pomocnik do ładowania szablonów
 $loader = new Twig\Loader\FilesystemLoader("./../src/templates");
 //inicjujemy twiga
+//wtf
 $twig = new Twig\Environment($loader);
 ?>
