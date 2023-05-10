@@ -20,6 +20,7 @@
     if(isset($_POST['submit'])) 
     {
         //zdefiniuj folder do którego trafią pliki (ścieżka względem pliku index.php)
+        //nwm co jest 5
         $targetDir = "img/";
 
         //pobierz pierwotną nazwę pliku z tablicy $_FILES

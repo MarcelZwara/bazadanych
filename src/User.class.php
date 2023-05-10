@@ -58,6 +58,7 @@ class User {
     }
     public static function isAuth() : bool {
         //funkcja zwraca true jeśli użytkownik jest zalogowany
+        //funkcja zwraca true jeśli użytkownik jest zalogowany
         if(isset($_SESSION['user'])) {
             if($_SESSION['user'] instanceof User) {
                 return true;

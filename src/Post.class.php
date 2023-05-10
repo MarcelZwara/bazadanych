@@ -82,6 +82,7 @@ class Post {
         //wywołaj kwerendę
         $query->execute();
         //odbierz wyniki
+        //wyniki odebrane
         $result = $query->get_result();
         //stwórz tablicę na obiekty
         $postsArray = array();
