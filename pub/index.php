@@ -11,7 +11,7 @@ Route::add('/', function() {
     //pobierz 10 najnowszych postów
     $postArray = Post::getPage();
     $twigData = array("postArray" => $postArray,
-                        "pageTitle" => "GŁÓWNA",
+                        "pageTitle" => "Strona główna",
                         );
     //jeśli użytkownik jest zalogowany to przekaż go do twiga
     if(isset($_SESSION['user']))
@@ -101,6 +101,15 @@ Route::add('/admin/remove/([0-9]*)', function($id) {
     } else {
         die("Nie udało się usunąć podanego obrazka");
     }
+});
+
+Route::add('/upvote/([0-9]*)', function($id) {
+    Vote::upVote($id, $_SESSION['user']->getId());
+    header("Location: http://localhost/bazadanych/pub/");
+});
+Route::add('/downvote/([0-9]*)', function($id) {
+    Vote::downVote($id, $_SESSION['user']->getId());
+    header("Location: http://localhost/bazadanych/pub/");
 });
 
 Route::run('/bazadanych/pub');
